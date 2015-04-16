@@ -12,8 +12,12 @@ client = Twitter::REST::Client.new do |config|
 end
 
 set :bind, '0.0.0.0'
-set :port, 3000
 set :views, Proc.new { File.join(root, "views") }
+if ENV['PORT'].nil?
+	set :port, 3000
+else
+	set :port, ENV['PORT']
+end
 
 get '/' do
 	erb :index
