@@ -25,7 +25,7 @@ post '/' do
 	
 	tweets = []
 	# client.filter(:track => params['terms'].join(",")) do |object|
-	client.search(params['terms'], result_type: "recent").take(10).each do |object|
+	client.search(params['terms'], result_type: "recent").take(params['quantity'].to_i).each do |object|
 		tweets << object.text if object.is_a?(Twitter::Tweet)
 	end
 	csv_string = CSV.generate do |csv|
