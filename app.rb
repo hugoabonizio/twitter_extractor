@@ -13,6 +13,7 @@ end
 
 set :bind, '0.0.0.0'
 set :views, Proc.new { File.join(root, "views") }
+set :server, 'puma'
 
 get '/' do
 	erb :index

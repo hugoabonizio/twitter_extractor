@@ -15,6 +15,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     multipart-post (2.0.0)
     naught (1.0.0)
+    puma (2.9.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -42,5 +44,6 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  puma
   sinatra
   twitter
