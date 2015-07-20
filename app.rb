@@ -20,16 +20,17 @@ get '/' do
 end
 
 post '/' do
-	content_type 'application/csv'
+  content_type 'application/csv'
   attachment "arquivo.csv"
-	
-	tweets = []
-	# client.filter(:track => params['terms'].join(",")) do |object|
-	client.search(params['terms'], result_type: "recent").take(params['quantity'].to_i).each do |object|
-		tweets << object.text if object.is_a?(Twitter::Tweet)
-	end
-	csv_string = CSV.generate do |csv|
-		csv << ["Copyleft HugoJapaRicKenji - Todos esquerdo reservado"]
-		tweets.each { |t| csv << [t] }
-	end
+  
+  tweets = []
+  # client.filter(:track => params['terms'].join(",")) do |object|
+  client.search(params['terms'], result_type: "recent").take(params['quantity'].to_i).each do |object|
+    tweets << object.text if object.is_a?(Twitter::Tweet)
+  end
+  
+  csv_string = CSV.generate do |csv|
+    csv << ["Copyleft HugoJapaRicKenji - Todos esquerdo reservado"]
+    tweets.each { |t| csv << [t] }
+  end
 end
