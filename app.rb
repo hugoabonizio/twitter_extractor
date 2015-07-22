@@ -16,7 +16,7 @@ set :views, Proc.new { File.join(root, "views") }
 set :server, 'puma'
 
 get '/' do
-	erb :index
+  erb :index
 end
 
 post '/' do
