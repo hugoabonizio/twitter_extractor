@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'csv'
+require 'json'
 require 'twitter'
 require 'dotenv'
 Dotenv.load
@@ -33,4 +34,12 @@ post '/' do
     csv << ["Copyleft HugoJapaRicKenji - Todos esquerdo reservado"]
     tweets.each { |t| csv << [t] }
   end
+end
+
+get '/H.json' do
+  JSON.pretty_generate(JSON.load(File.read('H.json')))
+end
+
+get '/BF.json' do
+  JSON.pretty_generate(JSON.load(File.read('BF.json')))
 end
